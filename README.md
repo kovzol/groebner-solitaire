@@ -7,7 +7,8 @@ That is, the player needs to reach the reduced Gröbner basis of the initially g
 
 The implementation is written in HTML/JavaScript and uses GeoGebra for rendering the graphical objects.
 An [installed version](http://prover-test.geogebra.org/~kovzol/groebner-solitaire/groebner-solitaire.html) can be tried out.
+A [video](https://www.youtube.com/watch?v=Xbpr2Fp_NvY) describes how a typical game flow looks like.
 
-This project is a work-in-progress.
+This project is a work-in-progress. Currently only one game level is included and the solution is hardcoded.
 
 Author: Zoltán Kovács <zoltan@geogebra.org>
