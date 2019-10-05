@@ -1,0 +1,442 @@
+<html>
+
+<head>
+    <title>Gröbner Solitaire</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+<body onload="go()">
+
+<div>
+    <h1>Welcome to the Gröbner Solitaire!</h1>
+    <div id="geogebra_loading"><p>Please wait for GeoGebra to load...</p></div>
+    <div id="geogebra_loaded" hidden="true">
+        <p>Consider this initial position of the segments. Try to obtain the final position.</p>
+    </div>
+    <div id="check_button" hidden="true">
+        <p><button id="check_solution" type="button" onclick="check_solution()">Check solution</button></p>
+    </div>
+
+    <div id="applet_container"></div>
+
+    <div id="phase"></div>
+
+
+</div>
+
+<script type="text/javascript" src="deployggb.js"></script>
+
+<script type='text/javascript'>
+
+    startup = "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";
+
+    // https://css-tricks.com/snippets/javascript/get-url-variables/
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return (false);
+    }
+
+
+    function go() {
+
+        running = false;
+
+        // 1. Setup GeoGebra
+        var parameters = {
+            "id": "ggbApplet",
+            "width": 400,
+            "height": 400,
+            "showToolBar": false,
+            "borderColor": null,
+            "showMenuBar": false,
+            "allowStyleBar": false,
+            "showAlgebraInput": false,
+            "enableLabelDrags": false,
+            "enableShiftDragZoom": false,
+            "capturingThreshold": null,
+            "showToolBarHelp": false,
+            "errorDialogsActive": false,
+            "showTutorialLink": false,
+            "showLogging": true,
+            "useBrowserForJS": false,
+            "enableRightClick": false,
+            "perspective": "G"
+        };
+
+        parameters.appletOnLoad = function (api) {
+            // This code will run after the applet has been injected.
+            gA = ggbApplet;
+            var element = document.getElementById('geogebra_loading');
+            var version = gA.getVersion();
+            element.innerHTML = 'Using GeoGebra ' + version + '. ';
+            var element = document.getElementById('geogebra_loaded');
+            element.hidden = false;
+
+            // 3. Create initial objects (this could be done later as well)
+            gA.setBase64(startup);
+            // gA.setPerspective("G");
+
+            // 4. To do CAS computations, the CAS must be loaded somehow.
+            // There are multiple ways to do that. The best way is
+            // to call the CAS implicitly and the computation result is
+            // collected into a dummy variable.
+            gA.evalCommand("dummy=Factor(x^2+x)");
+            gA.setVisible("dummy", false);
+            // There is a quick result in the dummy variable, "undefined",
+            // but the CAS is starting to be loaded in the background,
+            // asynchronously. However, the immediate result of the command
+            // is synchronous, that is, it is obtained immediately after
+            // evalCommand is performed.
+
+            // 5. Register a listener to be informed on the final result
+            // when the dummy variable is computed. On the finished computation
+            // the dummy variable will be updated and the listener will
+            // be notified.
+            gA.registerUpdateListener("go_heavy");
+        };
+
+        // 2. Inject applet
+        var applet = new GGBApplet(parameters, '5.0', 'applet_container');
+
+        // Using GeoGebra offline:
+        applet.setHTML5Codebase('GeoGebra/HTML5/5.0/web/');
+        applet.inject('applet_container');
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function output(message) {
+        var outputbox = document.getElementById('outputbox');
+        outputbox.innerHTML += message;
+        outputbox.scrollTop = 99999;
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function getElapsedTime() {
+        var endTime = new Date();
+        var timeDiff = endTime - startTime;
+        timeDiff /= 1000;
+        var seconds = Math.round(timeDiff % 60);
+        timeDiff = Math.floor(timeDiff / 60);
+        var minutes = Math.round(timeDiff % 60);
+        timeDiff = Math.floor(timeDiff / 60);
+        var hours = Math.round(timeDiff % 24);
+        return "Elapsed time: " + hours + "h " + minutes + "m " + seconds + "s";
+    }
+
+    function endMessage(text) {
+        var restart_button = document.getElementById('restart');
+        restart_button.hidden = false;
+    }
+
+    function problems() {
+        P = [];
+        Q = [];
+        var p = [3,0,0,0,1,2,0,3]; // problem
+        var q = [[3,0,0,0],[1,2,0,3],[0,5,0,2]]; // solution
+        P.push(p);
+        Q.push(q);
+    }
+
+    function Ax(i) {
+        return p[i*4];
+        }
+    function Ay(i) {
+        return p[i*4+1];
+        }
+    function Bx(i) {
+        return p[i*4+2];
+        }
+    function By(i) {
+        return p[i*4+3];
+        }
+
+    function create_segment(j, r, g, b) {
+        var a = "A" + j;
+        var command = a + "=(" + Ax(j) + "," + Ay(j) + ")";
+        console.log(command);
+        gA.evalCommand(command);
+        var b = "B" + j;
+        var command = b + "=(" + Bx(j) + "," + By(j) + ")";
+        console.log(command);
+        gA.evalCommand(command);
+        var s = "s" + j;
+        gA.evalCommand(s + "=Segment(" + a + "," + b + ")");
+        gA.setFixed(a,false,false);
+        gA.setFixed(b,false,false);
+        gA.setVisible(b,false);
+        gA.setFixed(s,true,true);
+        gA.setColor(s,r,g,b);
+        gA.setColor(a,r,g,b);
+    }
+
+    async function go_heavy(object) {
+        // 6. This is called when the dummy object has been updated
+        // on completion of the dummy computation.
+        if (object == "dummy") {
+            // 7. Remove this listener to avoid re-launching this code.
+            // Also remove dummy object.
+            gA.unregisterUpdateListener("go_heavy");
+            gA.deleteObject("dummy");
+            gA.registerClickListener("on_click");
+
+            // 8. Start real computations. Note that all evalCommand
+            // computations are synchronous, that is, from this point on
+            // no asynchronous code must be written.
+
+            var element = document.getElementById('geogebra_loading');
+            element.hidden = true;
+            element = document.getElementById('check_button');
+            element.hidden = false;
+
+            problems();
+
+            var r = 0;
+            p = P[r];
+            q = Q[r];
+            segs = p.length/4;
+            for (i=0; i<segs; i++) {
+                create_segment(i,255,0,0);
+                }
+            selected = [];
+
+            phase_text = ["",
+                "Generation phase 1: Select two red segments and click on the blue area to generate a green segment.",
+                "Generation phase 2: Finalize the generated green segment by clicking on it.",
+                "Reduction phase 1: Keep the green segment selected and reduce it by a red segment by clicking on it, then click on the blue area for reduction.",
+                "Reduction phase 2: Confirm the reduced green segment by clicking on it."
+                ];
+
+            phase = 1;
+            set_phase();
+
+            return;
+            }
+        }
+
+function remove_segment(i) {
+    gA.deleteObject("A"+i);
+    for (var j=0; j<4; j++) {
+        p[4*i+j]=-1; // TODO: find a more elegant way
+        }
+    }
+
+function existing_segment(i) {
+   return Ax(i)>=0 && Ay(i)>=0 && Bx(i)>=0 && By(i)>=0;
+   }
+
+function set_phase() {
+    var element = document.getElementById('phase');
+    element.innerHTML = phase_text[phase];
+    element = document.getElementById('check_solution');
+    if (phase==1) {
+       element.disabled = false;
+       } else {
+       element.disabled = true;
+       }
+}
+
+function initialize_segment(j) {
+     gA.setColor("s" + j, 255, 0, 0);
+     gA.setColor("A" + j, 255, 0, 0);
+     gA.setFixed("s" + j, true, true);
+}
+
+
+function on_click(object) {
+
+    var t = gA.getObjectType(object);
+
+    console.log(object + " type is " + t + ", phase = " + phase);
+
+
+    if (t == "inequality") { // we are in generation or reduction
+        if (selected.length == 2) {
+            // remove inequalities:
+            for (var i = 0; i<2; i++) {
+                gA.deleteObject("i" + selected[i]);
+                }
+            var Cx=Math.max(Ax(selected[0]),Ax(selected[1]));
+            var Cy=Math.max(Ay(selected[0]),Ay(selected[1]));
+            var Dx=-Ax(selected[0])+Bx(selected[0])+Cx; // Cx-Dx=Ax-Bx
+            var Dy=-Ay(selected[0])+By(selected[0])+Cy; // Cy-Dy=Ay-By
+            var Ex=-Ax(selected[1])+Bx(selected[1])+Cx;
+            var Ey=-Ay(selected[1])+By(selected[1])+Cy;
+            selected = [];
+
+            var Gx, Gy, Hx, Hy;
+            // order lexicographically:
+            if (Dx>Ex) {
+               Gx=Dx;
+               Gy=Dy;
+               Hx=Ex;
+               Hy=Ey;
+               }
+            else {
+               if (Dx<Ex) {
+                   Gx=Ex;
+                   Gy=Ey;
+                   Hx=Dx;
+                   Hy=Dy;
+                   }
+               else { // Dx==Ex
+                   if (Dy>Ey) {
+                       Gx=Dx;
+                       Gy=Dy;
+                       Hx=Ex;
+                       Hy=Ey;
+                       } else {
+                         if (Dy<Ey) {
+                             Gx=Ex;
+                             Gy=Ey;
+                             Hx=Dx;
+                             Hy=Dy;
+                             } else {
+                             console.log("Nothing is generated. Dx="+Dx+" Dy="+Dy+" Ex="+Ex+" Ey="+Ey);
+                             alert("No segment is generated in this way, just a point, because the green and red segments are congruent. Please try again and generate a new green segment.");
+                             remove_segment(segs-1);
+                             phase = 1;
+                             set_phase();
+                             for (var i=0; i<segs-1; i++) {
+                                 initialize_segment(i);
+                                 }
+                             return; // nothing is generated
+                             }
+                       }
+                   }
+               }
+            console.log("Generated segment should be ("+Gx+","+Gy+")-("+Hx+","+Hy+")");
+            for (var i=0; i<segs; i++) {
+               if (Gx == Ax(i) && Gy == Ay(i) && Hx == Bx(i) && Hy == By(i)) { // this segment already exists
+                   console.log("Already exists as s"+i);
+                   alert("The segment you obtained already exists as a red segment. Too bad! Please try again and generate a new green segment.");
+                   remove_segment(segs-1);
+                   phase = 1;
+                   set_phase();
+                   for (var i=0; i<segs-1; i++) {
+                       initialize_segment(i);
+                       }
+
+                   return;
+                   }
+               }
+
+            p.push(Cx,Cy,Dx,Dy);
+            console.log(p);
+            create_segment(segs,128,128,128);
+            gA.setFixed("s" + segs,false,false);
+            segs++;
+            p.push(Cx,Cy,Ex,Ey);
+            console.log(p);
+            create_segment(segs,128,128,128);
+            gA.setFixed("s" + segs,false,false);
+            segs++;
+            p.push(Gx,Gy,Hx,Hy);
+            console.log(p);
+            create_segment(segs,0,255,0);
+            if (phase == 3) { // reduction
+                remove_segment(segs-3);
+                }
+            segs++;
+            phase++;
+            }
+        }
+
+    set_phase();
+
+    if (t != "segment") {
+        return;
+        }
+
+    console.log(object + " changed");
+
+    if (phase == 2 || phase == 4) { // generation, end
+        var i = parseInt(object.substring(1));
+        if (i == segs-1) { // this is the generated segment
+           remove_segment(i-1);
+           remove_segment(i-2);
+           gA.setColor("s" + i, 0, 255, 0);
+           gA.setColor("A" + i, 0, 255, 0);
+           phase = 3; // start reduction
+           set_phase();
+           var allowed = 0;
+           for (i=0; i<segs-1; i++) {
+              if (Ax(i)>Ax(segs-1) || Ay(i)>Ay(segs-1)) {
+                 // disable segments that are in the wrong direction:
+                 gA.setColor("s" + i, 64, 0, 0);
+                 gA.setColor("A" + i, 64, 0, 0);
+                 gA.setFixed("s" + i, false, false);
+                 } else if (existing_segment(i)) {
+                 // eventually re-allow segments from the previous reduction step:
+                 initialize_segment(i);
+                 allowed++;
+                 }
+              }
+           if (allowed == 0) { // end of reduction
+               for (i=0; i<segs-1; i++) {
+                   initialize_segment(i);
+                   }
+               gA.setColor("s" +(segs-1), 255, 0, 0);
+               gA.setColor("A" +(segs-1), 255, 0, 0);
+               phase = 1;
+               set_phase();
+               alert("Great! You created a new segment since no further reduction is possible for the green segment.");
+               return;
+               }
+           }
+        }
+
+    if (phase == 1 || phase == 3) { // generation or reduction
+       if (selected.length<3) {
+          var i = parseInt(object.substring(1));
+          if (selected.includes(i)) {
+              gA.deleteObject("i" + i);
+              for (var j = selected.length - 1; j >= 0; j--) {
+                  if (selected[j] === i) {
+                      selected.splice(j, 1);
+                      }
+                  }
+              return;
+              }
+          var command="i" + i + "=(x>=" + Ax(i) + " && y>=" + Ay(i) + ")";
+          gA.evalCommand(command);
+          selected.push(i);
+          return;
+          }
+       }
+
+    return;
+    }
+
+function check_solution() {
+    for (var i=0; i<q.length; i++) {
+        found = false;
+        var j=0;
+        while (j<segs && !found) {
+            if (existing_segment(j) && q[i][0] == Ax(j) && q[i][1] == Ay(j) && q[i][2] == Bx(j) && q[i][3] == By(j)) {
+                found = true;
+                }
+            j++;
+            }
+        if (!found) {
+            alert("Sorry, you did not find the final position yet! Please continue.");
+            return;
+            }
+        }
+    alert("Great! You found the final position. You win.");
+    }
+
+</script>
+
+ </body>
+</html>
