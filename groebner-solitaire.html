@@ -60,7 +60,7 @@
             "allowStyleBar": false,
             "showAlgebraInput": false,
             "enableLabelDrags": false,
-            "enableShiftDragZoom": false,
+            "enableShiftDragZoom": true,
             "capturingThreshold": null,
             "showToolBarHelp": false,
             "errorDialogsActive": false,
@@ -263,14 +263,14 @@
 
             problems();
 
-            var r = 0;
+            var r = 0; // change this to have a different game
             p = ideal2quadruple(P[r]).flat();
             console.log("p=" + p);
             caseval = __ggb__giac.cwrap('caseval', 'string', ['string']); // direct link to Giac
-            var giaccommand = "gbasis([ " + P[r] + "] mod 2,[x,y])";
+            var giaccommand = "gbasis([" + P[r] + "] mod 2,[x,y],plex)";
             var solution = caseval(giaccommand);
             console.log("giaccommand=" + giaccommand);
-            solution = solution.substring(1, solution.length - 1);
+            solution = solution.substring(1, solution.length - 1).replace(/\-/g, "+");
             console.log("solution=" + solution);
             q = ideal2quadruple(solution);
             console.log("q=" + q);
