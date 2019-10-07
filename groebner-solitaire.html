@@ -263,7 +263,10 @@
 
             problems();
 
-            var r = 0; // change this to have a different game
+            var r = getQueryVariable("level");
+            if (!r) {
+                r = 0;
+                }
             p = ideal2quadruple(P[r]).flat();
             console.log("p=" + p);
             caseval = __ggb__giac.cwrap('caseval', 'string', ['string']); // direct link to Giac
