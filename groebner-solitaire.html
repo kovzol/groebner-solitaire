@@ -384,9 +384,7 @@
                             } else {
                                 console.log("Nothing is generated. Dx=" + Dx + " Dy=" + Dy + " Ex=" + Ex + " Ey=" + Ey);
                                 alert("No segment is generated in this way, just a point, because the green and red segments are congruent. Please try again and generate a new green segment.");
-                                if (phase == 4) {
-                                   remove_segment(segs - 1);
-                                   }
+                                remove_segment(segs - 1);
                                 phase = 1;
                                 set_phase();
                                 for (i = 0; i < segs - 1; i++) {
