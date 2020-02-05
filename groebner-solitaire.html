@@ -16,17 +16,11 @@
     <div id="geogebra_loaded" hidden="true">
     </div>
     <div id="check_button" hidden="true">
-        <p>
-            <button id="check_solution" type="button" onclick="check_solution()"></button>
-        </p>
+        <p><button id="check_solution" type="button" onclick="check_solution()"></button></p>
     </div>
-
     <div id="applet_container"></div>
-
     <div id="phase"></div>
-
     <div id="info"></div>
-
 </div>
 
 <script type="text/javascript" src="deployggb.js"></script>
@@ -355,7 +349,6 @@
             }
             selected = [];
 
-
             phase = 1;
             set_phase();
         }
@@ -396,7 +389,6 @@
         selected = [];
     }
 
-
     function on_update_slider(object) {
         if (gA.getValue("slider") < 0.9) {
         // We cannot trigger the last update, so we need to use this dirty hack here.
@@ -430,8 +422,6 @@
             // So we need to recreate them:
             gA.registerClickListener("on_click");
             gA.registerObjectUpdateListener("slider", "on_update_slider");
-
-            return;
         }
     }
 
@@ -500,7 +490,6 @@
                         }
                     }
                 }
-
 
                 console.log("Generated segment should be (" + Gx + "," + Gy + ")-(" + Hx + "," + Hy + ")");
                 for (i = 0; i < segs; i++) {
