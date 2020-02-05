@@ -387,6 +387,12 @@
             set_phase();
             gA.setValue("slider", 0);
 
+            // remove inequalities:
+            for (i = 0; i < 2; i++) {
+                gA.deleteObject("i" + selected[i]);
+            }
+                selected = [];
+
             // For some reason, the listeners stop when the animation stops.
             // So we need to recreate them:
             gA.registerClickListener("on_click");
@@ -405,10 +411,6 @@
 
         if (t === "inequality") { // we are in generation or reduction
             if (selected.length === 2) {
-                // remove inequalities:
-                for (i = 0; i < 2; i++) {
-                    gA.deleteObject("i" + selected[i]);
-                }
                 var A0x = Ax(selected[0]);
                 var A1x = Ax(selected[1]);
                 var A0y = Ay(selected[0]);
@@ -424,7 +426,6 @@
                 var Dy = -A0y + B0y + Cy; // Cy-Dy=Ay-By
                 var Ex = -A1x + B1x + Cx;
                 var Ey = -A1y + B1y + Cy;
-                selected = [];
 
                 var Gx, Gy, Hx, Hy;
                 // order lexicographically:
