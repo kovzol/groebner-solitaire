@@ -53,24 +53,51 @@
 
         running = false;
 
+        var lang = getQueryVariable("lang");
+        if (!lang) {
+            lang = "English";
+            }
+
         // 0. Internationalize initial texts
-        messages = [ "Welcome to the Gröbner Solitaire!",
-            "Please wait for GeoGebra to load...",
-            "Consider this initial position of the segments. Try to obtain the final position.",
-            "Check solution",
-            "This web app was programmed by <a %1$s>%2$s</a> based on the game described in <a %3$s>an article</a> by %4$s and <a %5$s>%6$s</a>.",
-            "Using GeoGebra %1$s.",
-            "No segment is generated in this way, just a point, because the green and red segments are congruent. Please try again and generate a new green segment.",
-            "The segment you obtained already exists as a red segment. Too bad! Please try again and generate a new green segment.",
-            "Great! You created a new segment since no further reduction is possible for the green segment.",
-            "Sorry, you did not find the final position yet! Please continue.",
-            "Great! You found the final position. You win."
-            ];
-        phase_text = ["Generation phase 1: Select two red segments and click on the blue area to generate a green segment.",
-            "Generation phase 2: Finalize the generated green segment by clicking on it.",
-            "Reduction phase 1: Keep the green segment selected and reduce it by a red segment by clicking on it, then click on the blue area for reduction.",
-            "Reduction phase 2: Confirm the reduced green segment by clicking on it."
-            ];
+        if (lang === "English") {
+            messages = [ "Welcome to the Gröbner Solitaire!",
+                "Please wait for GeoGebra to load...",
+                "Consider this initial position of the segments. Try to obtain the final position.",
+                "Check solution",
+                "This web app was programmed by <a %1$s>%2$s</a> based on the game described in <a %3$s>an article</a> by %4$s and <a %5$s>%6$s</a>.",
+                "Using GeoGebra %1$s.",
+                "No segment is generated in this way, just a point, because the green and red segments are congruent. Please try again and generate a new green segment.",
+                "The segment you obtained already exists as a red segment. Too bad! Please try again and generate a new green segment.",
+                "Great! You created a new segment since no further reduction is possible for the green segment.",
+                "Sorry, you did not find the final position yet! Please continue.",
+                "Great! You found the final position. You win."
+                ];
+            phase_text = ["Generation phase 1: Select two red segments and click on the blue area to generate a green segment.",
+                "Generation phase 2: Finalize the generated green segment by clicking on it.",
+                "Reduction phase 1: Keep the green segment selected and reduce it by a red segment by clicking on it, then click on the blue area for reduction.",
+                "Reduction phase 2: Confirm the reduced green segment by clicking on it."
+                ];
+            }
+
+        if (lang === "Hungarian") {
+            messages = [ "Köszöntünk a Gröbner Solitaire játékban!",
+                "A GeoGebra betöltése folyamatban...",
+                "A játéktáblán néhány szakaszot látsz. Keresd meg a végső pozíciójukat!",
+                "A megoldás ellenőrzése",
+                "Ezt a webalkalmazást <a %1$s>Kovács Zoltán</a> készítette. A program egy %4$s és <a %5$s>%6$s</a> által írt <a %3$s>matematikai tárgyú cikkben</a> bemutatott játékon alapul.",
+                "A GeoGebra %1$s verziójának betöltése sikerült.",
+                "Nem keletkezett szakasz ily módon, csupán egy pont, mivel a zöld és piros szakaszok eltolással egymásba vihetők. Próbáld újra egy új zöld szakasz létrehozásával!",
+                "A kapott szakasz már létezik mint piros szakasz. Kár! Próbáld újra egy új zöld szakasz létrehozásával!",
+                "Nagyszerű! Sikerült létrehoznod egy új szakaszt, mivel a zöld szakasz tovább már nem egyszerűsíthető.",
+                "Sajnos ez még nem a végső pozíció! Kérlek folytasd a játékot tovább!",
+                "Nagyszerű! Megtaláltad a végső pozíciót. Nyertél!"
+                ];
+            phase_text = ["Létrehozás, 1. lépés: Válassz két piros szakaszt és kattints a kék területre! Így létrehozhatsz egy zöld szakaszt.",
+                "Létrehozás, 2. lépés: Rögzítsd a zöld szakaszt úgy, hogy rákattintasz.",
+                "Egyszerűsítés, 1. lépés: Legyen a zöld szakasz kiválasztva, és egyszerűsítsd a zöld szakaszt egy piros szakasszal (kattints rá), majd kattints a létrejövő kék területre.",
+                "Egyszerűsítés, 2. lépés: Rögzítsd a zöld szakaszt úgy, hogy rákattintasz."
+                ];
+            }
 
         var element = document.getElementById('welcome');
         element.innerHTML = messages[MessageEnum.WELCOME];
