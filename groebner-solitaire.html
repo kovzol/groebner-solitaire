@@ -99,6 +99,26 @@
                 ];
             }
 
+        if (lang === "German") {
+            messages = [ "Willkommen im Spiel namens Gröbner Solitaire!",
+                "GeoGebra lädt...",
+                "Im Koordinatensystem sehen sie ein paar Strecken. Suchen sie ihre Endposition!",
+                "Die Lösung überprüfen",
+                "Diese Applikation wurde von <a %1$s>%2$s</a> erstellt. Das Programm basiert auf einem Spiel von %4$s und <a %5$s>%6$s</a> verfassten <a %3$s>mathematischen Artikel</a>.",
+                "Die Version %1$s von GeoGebra wurde erfolgreich geladen.",
+                "Auf dieser Weise kann keine Strecke entstehen, nur ein Punkt, da die grüne und rote Strecke nur durch verschieben ineinander gebracht werden können. Versuche es nochmal mit der Erstellung einer grünen Strecke.",
+                "Die erhaltene Strecke existiert schon als rote Strecke. Schade! Versuche es nochmal mit der Erstellung einer grünen Strecke.",
+                "Super! Du hast es geschafft, eine neue Strecke zu erstellen, da man die grüne Strecke nicht mehr weiter vereinfachen kann.",
+                "Leider ist das noch nicht die Endposition! Bitte probiere es weiter.",
+                "Genial! Du hast die Endposition gefunden. Gratuliere, du hast das Spiel gewonnen!"
+                ];
+            phase_text = ["Erstellen, 1. Schritt: Wähle zwei rote Strecken und klicke auf das entstehende blaue Rechteck. Hiermit kannst du eine grüne Strecke erzeugen.",
+                "Erstellen, 2. Schritt: Fixiere die grüne Strecke, indem du draufklickst.",
+                "Vereinfachen, 1. Schritt: Wähle die grüne Strecke aus, und vereinfache die grüne Strecke mit der roten Strecke (klicke drauf), dann klicke auf das entstehende blaue Rechteck.",
+                "Vereinfachen, 2. Schritt: Fixiere die grüne Strecke, indem du draufklickst."
+                ];
+            }
+
         var element = document.getElementById('welcome');
         element.innerHTML = messages[MessageEnum.WELCOME];
         element = document.getElementById('geogebra_loading');
