@@ -25,17 +25,12 @@
 
     <div id="phase"></div>
 
-    <p>
-    This web app was programmed by
-    <a href="https://www.geogebra.org/u/zoltan" target="_blank">Zolt&aacute;n Kov&aacute;cs</a>,
-    based on the game described in
-    <a href="http://dx.doi.org/10.4169/math.mag.89.4.235" target="_blank">an article</a>
-    by Haley Dozier and <a href="http://www.math.usm.edu/perry/" target="_blank">John Perry</a>.
-    </p>
+    <div id="info"></div>
 
 </div>
 
 <script type="text/javascript" src="deployggb.js"></script>
+<script type="text/javascript" src="sprintf.js"></script>
 
 <script type='text/javascript'>
 
@@ -63,8 +58,11 @@
         static_messages = [ "Welcome to the Gröbner Solitaire!",
             "Please wait for GeoGebra to load...",
             "Consider this initial position of the segments. Try to obtain the final position.",
-            "Check solution"
+            "Check solution",
+            "This web app was programmed by <a %1$s>%2$s</a> based on the game described in <a %3$s>an article</a> by %4$s and <a %5$s>%6$s</a>.",
+            "Using GeoGebra %1$s."
             ];
+        // %1$s%2$s⟂%3$s%4$s
         var element = document.getElementById('welcome');
         element.innerHTML = static_messages[0];
         element = document.getElementById('geogebra_loading');
@@ -73,6 +71,14 @@
         element.innerHTML = '<p>' + static_messages[2] + '</p>';
         element = document.getElementById('check_solution');
         element.innerHTML = static_messages[3];
+        element = document.getElementById('info');
+        element.innerHTML = '<p>' + sprintf(static_messages[4],
+            'href="https://www.geogebra.org/u/zoltan" target="_blank"',
+            "Zoltán Kovács",
+            'href="http://dx.doi.org/10.4169/math.mag.89.4.235" target="_blank"',
+            'Haley Dozier',
+            'href="http://www.math.usm.edu/perry/" target="_blank"',
+            'John Perry') + '</p>';
 
         // 1. Setup GeoGebra
         var parameters = {
@@ -101,7 +107,7 @@
             gA = ggbApplet;
             var element = document.getElementById('geogebra_loading');
             var version = gA.getVersion();
-            element.innerHTML = 'Using GeoGebra ' + version + '. ';
+            element.innerHTML = sprintf(static_messages[5], version);
             var element = document.getElementById('geogebra_loaded');
             element.hidden = false;
 
