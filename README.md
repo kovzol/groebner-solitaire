@@ -12,9 +12,11 @@ A [video](https://www.youtube.com/watch?v=Xbpr2Fp_NvY) describes how a typical g
 This project is a work-in-progress. Currently only four game levels are included. The level can be selected by
 appending `?level=0` or `?level=1`, and so on, to the URL.
 
-Two languages are supported in the gameplay: English and Hungarian. Language selection is possible by
-appending `&lang=Hungarian` after the level selection. (See more on this at the description of
+Three languages are supported in the gameplay: English, German and Hungarian. Language selection is possible by
+appending e.g. `&lang=German` after the level selection. (See more on this at the description of
 [query string](https://en.wikipedia.org/wiki/Query_string) and
 [HTTP GET request](https://www.w3schools.com/tags/ref_httpmethods.asp).)
 
 Author: Zoltán Kovács <zoltan@geogebra.org>
+
+German translation: Benedek Kovács <kovben2004@gmail.com>
