@@ -326,6 +326,12 @@
                 "Reduction phase 1: Keep the green segment selected and reduce it by a red segment by clicking on it, then click on the blue area for reduction.",
                 "Reduction phase 2: Confirm the reduced green segment by clicking on it."
             ];
+            messages = [ "No segment is generated in this way, just a point, because the green and red segments are congruent. Please try again and generate a new green segment.",
+                "The segment you obtained already exists as a red segment. Too bad! Please try again and generate a new green segment.",
+                "Great! You created a new segment since no further reduction is possible for the green segment.",
+                "Sorry, you did not find the final position yet! Please continue.",
+                "Great! You found the final position. You win."
+            ];
 
             phase = 1;
             set_phase();
@@ -454,7 +460,7 @@
                                 Hy = Dy;
                             } else {
                                 console.log("Nothing is generated. Dx=" + Dx + " Dy=" + Dy + " Ex=" + Ex + " Ey=" + Ey);
-                                alert("No segment is generated in this way, just a point, because the green and red segments are congruent. Please try again and generate a new green segment.");
+                                alert(messages[0]);
                                 remove_segment(segs - 1);
                                 phase = 1;
                                 set_phase();
@@ -472,7 +478,7 @@
                 for (i = 0; i < segs; i++) {
                     if (Gx === Ax(i) && Gy === Ay(i) && Hx === Bx(i) && Hy === By(i)) { // this segment already exists
                         console.log("Already exists as s" + i);
-                        alert("The segment you obtained already exists as a red segment. Too bad! Please try again and generate a new green segment.");
+                        alert(messages[1]);
                         remove_segment(segs - 1);
                         phase = 1;
                         set_phase();
@@ -545,7 +551,7 @@
                     gA.setColor("A" + (segs - 1), 255, 0, 0);
                     phase = 1;
                     set_phase();
-                    alert("Great! You created a new segment since no further reduction is possible for the green segment.");
+                    alert(messages[2]);
                     return;
                 }
             }
@@ -584,11 +590,11 @@
                 j++;
             }
             if (!found) {
-                alert("Sorry, you did not find the final position yet! Please continue.");
+                alert(messages[3]);
                 return;
             }
         }
-        alert("Great! You found the final position. You win.");
+        alert(messages[4]);
     }
 
 </script>
