@@ -386,6 +386,14 @@
         gA.setFixed("s" + j, true, true);
     }
 
+    function remove_ineqs() {
+        for (i = 0; i < 2; i++) {
+            gA.deleteObject("i" + selected[i]);
+        }
+        selected = [];
+    }
+
+
     function on_update_slider(object) {
         if (gA.getValue("slider") < 0.9) {
         // We cannot trigger the last update, so we need to use this dirty hack here.
@@ -413,11 +421,7 @@
             set_phase();
             gA.setValue("slider", 0);
 
-            // remove inequalities:
-            for (i = 0; i < 2; i++) {
-                gA.deleteObject("i" + selected[i]);
-            }
-                selected = [];
+            remove_ineqs();
 
             // For some reason, the listeners stop when the animation stops.
             // So we need to recreate them:
@@ -481,6 +485,7 @@
                             } else {
                                 console.log("Nothing is generated. Dx=" + Dx + " Dy=" + Dy + " Ex=" + Ex + " Ey=" + Ey);
                                 alert(messages[0]);
+                                remove_ineqs();
                                 remove_segment(segs - 1);
                                 phase = 1;
                                 set_phase();
@@ -499,6 +504,7 @@
                     if (Gx === Ax(i) && Gy === Ay(i) && Hx === Bx(i) && Hy === By(i)) { // this segment already exists
                         console.log("Already exists as s" + i);
                         alert(messages[1]);
+                        remove_ineqs();
                         remove_segment(segs - 1);
                         phase = 1;
                         set_phase();
