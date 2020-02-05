@@ -11,14 +11,13 @@
 <body onload="go()">
 
 <div>
-    <h1>Welcome to the Gröbner Solitaire!</h1>
-    <div id="geogebra_loading"><p>Please wait for GeoGebra to load...</p></div>
+    <h1><div id="welcome"></div></h1>
+    <div id="geogebra_loading"></div>
     <div id="geogebra_loaded" hidden="true">
-        <p>Consider this initial position of the segments. Try to obtain the final position.</p>
     </div>
     <div id="check_button" hidden="true">
         <p>
-            <button id="check_solution" type="button" onclick="check_solution()">Check solution</button>
+            <button id="check_solution" type="button" onclick="check_solution()"></button>
         </p>
     </div>
 
@@ -59,6 +58,21 @@
     function go() {
 
         running = false;
+
+        // 0. Internationalize initial texts
+        static_messages = [ "Welcome to the Gröbner Solitaire!",
+            "Please wait for GeoGebra to load...",
+            "Consider this initial position of the segments. Try to obtain the final position.",
+            "Check solution"
+            ];
+        var element = document.getElementById('welcome');
+        element.innerHTML = static_messages[0];
+        element = document.getElementById('geogebra_loading');
+        element.innerHTML = '<p>' + static_messages[1] + '</p>';
+        element = document.getElementById('geogebra_loaded');
+        element.innerHTML = '<p>' + static_messages[2] + '</p>';
+        element = document.getElementById('check_solution');
+        element.innerHTML = static_messages[3];
 
         // 1. Setup GeoGebra
         var parameters = {
