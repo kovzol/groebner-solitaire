@@ -416,10 +416,11 @@
     }
 
     function set_phase() {
+        phase_int = Math.floor(phase);
         var element = document.getElementById('phase');
-        element.innerHTML = phase_text[phase-1];
+        element.innerHTML = phase_text[phase_int-1];
         element = document.getElementById('check_solution');
-        if (phase === 1) {
+        if (phase_int === 1) {
             element.disabled = false;
         } else {
             element.disabled = true;
@@ -482,7 +483,7 @@
 
         console.log(object + " type is " + t + ", phase = " + phase);
 
-        if (t === "inequality") { // we are in generation or reduction
+        if (t === "inequality" && phase != 1.5 && phase != 3.5) { // we are in generation or reduction
             if (selected.length === 2) {
                 var A0x = Ax(selected[0]);
                 var A1x = Ax(selected[1]);

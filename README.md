@@ -20,3 +20,5 @@ appending e.g. `&lang=German` after the level selection. (See more on this at th
 Author: Zoltán Kovács <zoltan@geogebra.org>
 
 German translation: Benedek Kovács <kovben2004@gmail.com>
+
+The author is grateful to Alexander Vujic for his help in bugfixing.
