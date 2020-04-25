@@ -289,7 +289,9 @@
             console.log("id[" + j + "]=" + id[j]);
             twopairs = binom2seg(id[j]);
             console.log("twopairs=" + twopairs);
-            q.push(twopairs.flat());
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+            twopairs = twopairs.reduce((acc, val) => acc.concat(val), []);
+            q.push(twopairs);
         }
         return q;
     }
@@ -382,7 +384,9 @@
             if (!r) {
                 r = 0;
                 }
-            p = ideal2quadruple(P[r]).flat();
+            p = ideal2quadruple(P[r]);
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+            p = p.reduce((acc, val) => acc.concat(val), []);
             console.log("p=" + p);
             caseval = __ggb__giac.cwrap('caseval', 'string', ['string']); // direct link to Giac
             var giaccommand = "gbasis([" + P[r] + "] mod 2,[x,y],plex)";
